@@ -1,0 +1,60 @@
+<form class="sign-in-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <h2>Sign in Reactive Form</h2>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+      <mat-error
+        *ngIf="
+          signInForm.controls['username'].touched &&
+          !signInForm.controls['username'].valid
+        "
+      >
+        <span *ngIf="signInForm.controls['username'].errors?.['required']"
+          >Username is required</span
+        >
+        <span
+          *ngIf="signInForm.controls['username'].errors?.['minlength'] || signInForm.controls['username'].errors?.['maxlength']"
+          >Length from 6 to 32 characters</span
+        >
+        <span
+          *ngIf="!(signInForm.controls['username'].errors?.['minlength'] || signInForm.controls['username'].errors?.['maxlength']) && signInForm.controls['username'].errors?.['pattern']"
+          >Only alphabet</span
+        >
+      </mat-error>
+    </div>
+    <pre>{{ signInForm.controls["username"].errors | json }}</pre>
+    <div class="row-control">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          formControlName="password"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- <div formArrayName="tels" *ngIf="tels.controls.length">
+        <div class="row-control" *ngFor="let c of tels.controls; index as i">
+            <mat-form-field appearance="outline">
+              <mat-label>Số điện thoại</mat-label>
+              <input
+                type="tel"
+                matInput
+                placeholder="SĐT"
+                [formControlName]="i"
+              />
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="addTel()">+</button>
+            <button mat-raised-button color="warn" (click)="removeTel(i)" *ngIf="tels.controls.length > 1">-</button>
+          </div>
+    </div> -->
+
+    <div class="row-control row-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="signInForm.invalid">Sign in</button>
+    </div>
+    <pre>{{ signInForm.value | json }}</pre>
+  </form>
