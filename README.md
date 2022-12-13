@@ -267,7 +267,7 @@ export class SignInRfComponent implements OnInit {
   </form>
 ```
 
-## 2.4	FormBuilder Service
+## FormBuilder Service
 
 Chúng ta có thể thấy là nếu form có số lượng control lớn mà cứ phải `new` như ở trên thì khá là vất vả. Vì thế `Angular Reactive Forms` cung cấp luôn cho chúng ta một service là `FormBuilder` để các bạn có thể khởi tạo form nhanh hơn.
 
