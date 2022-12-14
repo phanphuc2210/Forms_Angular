@@ -37,11 +37,12 @@
       </mat-form-field>
     </div>
 
-    <!-- <div formArrayName="tels" *ngIf="tels.controls.length">
+    <div formArrayName="tels" *ngIf="tels.controls.length">
         <div class="row-control" *ngFor="let c of tels.controls; index as i">
             <mat-form-field appearance="outline">
               <mat-label>Số điện thoại</mat-label>
               <input
+                (blur)="onBlur(i)"
                 type="tel"
                 matInput
                 placeholder="SĐT"
@@ -51,7 +52,7 @@
             <button mat-raised-button color="primary" (click)="addTel()">+</button>
             <button mat-raised-button color="warn" (click)="removeTel(i)" *ngIf="tels.controls.length > 1">-</button>
           </div>
-    </div> -->
+    </div>
 
     <div class="row-control row-actions">
       <button mat-raised-button color="primary" type="submit" [disabled]="signInForm.invalid">Sign in</button>
